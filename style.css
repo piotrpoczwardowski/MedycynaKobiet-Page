@@ -2,18 +2,23 @@
   padding: 0;
   margin: 0;
 }
+
+/* HERO */
 .hero {
   text-align: center;
 }
 
 .hero__title {
   font-weight: lighter;
-  font-size: 50px;
+  font-size: 90px;
 }
+
 .hero__description {
   font-weight: lighter;
   margin-top: 20px;
+  font-size: 25px;
 }
+
 .hero__CTA {
   background: none;
   border: 2px solid black;
@@ -21,13 +26,35 @@
   font-size: 23px;
   height: 50px;
   width: 250px;
+  cursor: pointer;
 }
+
 .hero__icons {
   font-size: 35px;
-
   display: flex;
   justify-content: space-around;
   width: 150px;
   margin: 0 auto;
   margin-top: 20px;
+}
+
+.hero__icons a {
+  color: black;
+}
+
+/* ABOUT */
+.about {
+  text-align: center;
+}
+
+.about__title {
+  font-size: 90px;
+  font-weight: lighter;
+}
+
+.about__description {
+  font-size: 25px;
+  padding: 0 50px;
+  margin-top: 50px;
+  line-height: 35px;
 }
