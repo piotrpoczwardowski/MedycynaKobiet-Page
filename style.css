@@ -38,6 +38,10 @@
   height: 40px;
 }
 
+.editor {
+  display: none;
+}
+
 /* HERO */
 .hero {
   text-align: center;
