@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="log">
+      <input class="email" name="email" placeholder="email" type="email" />
+      <input class="password" name="password" placeholder="password" type="text" />
+      <button class="login">Log</button>
+    </form>
+<div class="editor">
+    <button class="logout">Logout</button>
+    <div class="news">
+      
+      <h1 class="news__title">
+        Spotkajmy sie tutaj
+      </h1>
+      <div class="news__block">
+        <div class="block__left">
+          <div class="block__frame"></div>
+          <div
+            style="background-image: url(https://qph.fs.quoracdn.net/main-qimg-a871765b5fb560b3dd09bb850882b6b9.webp)"
+            class="block__img"
+          ></div>
+        </div>
+        <div class="block__right">
+          <h2 class="block__title">Piątek, 28 czerwca</h2>
+          <h3 class="block__subtitle">Ceremonia Kakao w Kręgu Kobiet</h3>
+          <p class="block__description">
+            W Kręgu spotykamy się z potrzeby wyrażenia tęsknoty za dzieleniem
+            miłością, bliskim spotkaniem serce w serce...
+          </p>
+          <a href=""
+            ><button class="block__button">Dowiedz się więce</button></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyAzNWdg_8AUfEDn6gPHfstUSzkWAPmYh0s",
+    authDomain: "medycynakobiet-3713e.firebaseapp.com",
+    databaseURL: "https://medycynakobiet-3713e.firebaseio.com",
+    projectId: "medycynakobiet-3713e",
+    storageBucket: "medycynakobiet-3713e.appspot.com",
+    messagingSenderId: "712056412278",
+    appId: "1:712056412278:web:8498a7b21d6e2263"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+ let auth = firebase.auth()
+ let db = firebase.database()
+ let dbRef = db.ref()
+//  auth.createUserWithEmailAndPassword('ppxp6@wp.pl', '123456')
+//  auth.signInWithEmailAndPassword(this.state.email, this.state.password)
+ auth.onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+       console.log('user')
+      } else {
+      
+        console.log('No user')
+      }
+    })
+
+    let logout = document.querySelector('.logout')
+    let email = document.querySelector('.email')
+    let password = document.querySelector('.password')
+    let loginForm = document.querySelector('.log')
+
+    loginForm.addEventListener('submit',function(e){
+      e.preventDefault()
+ auth.signInWithEmailAndPassword(email.value, password.value)
+
+    })
     
-</body>
+    logout.addEventListener('click', function(){
+      auth.signOut()
+    })
+</script>
+  </body>
 </html>

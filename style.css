@@ -21,6 +21,23 @@
   margin: 0;
 }
 
+/* LOG */
+.log {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 50px auto;
+}
+
+.log input {
+  height: 30px;
+  font-size: 20px;
+}
+
+.log button {
+  height: 40px;
+}
+
 /* HERO */
 .hero {
   text-align: center;
@@ -115,7 +132,7 @@
 .block__img {
   height: 450px;
   position: absolute;
-  width: 500px;
+  width: 100%;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);

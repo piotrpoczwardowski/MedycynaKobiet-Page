@@ -22,6 +22,21 @@ $description: 25px;
   margin: 0;
 }
 
+/* LOG */
+.log{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 50px auto;
+  input{
+    height: 30px;
+    font-size: 20px;
+  }
+  button{
+    height: 40px;
+  }
+}
+
 /* HERO */
 .hero {
   text-align: center;
@@ -110,7 +125,7 @@ $description: 25px;
 .block__img {
   height: 450px;
   position: absolute;
-  width: 500px;
+  width: 100%;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
