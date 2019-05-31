@@ -24,7 +24,7 @@
         <input class="title" placeholder="title" type="text" />
         <input class="subtitle" placeholder="subtitle" type="text" />
         <input class="description" placeholder="description" type="text" />
-        <input class="url" placeholder="url" type="text" />
+        <input class="url" placeholder="url HTTP!" type="text" />
         <button class="add">Add</button>
       </form>
       <div class="events">
@@ -126,23 +126,30 @@
         let subtitle = subtitleInput.value;
         let description = descriptionInput.value;
         let url = urlInput.value;
-        let order = highest;
+        let order
+        if(events.length === 0){
+          order = 0
+        } else{
+          order = events[events.length -1].order + 1
+        }
+        
         fetch(usersApiUrl + "/events/.json", {
           method: "POST",
           body: JSON.stringify({
             title,
             subtitle,
             description,
-            url
+            url,
+            order
           })
-        });
+        }).then(request());
       }
 
       const request = async () => {
         const response = await fetch(usersApiUrl + "/events/.json");
         const json = await response.json();
 
-        events = Object.entries(json).map(([id, value]) => ({
+        events = Object.entries(json || {}).map(([id, value]) => ({
           id,
           ...value
         }));
@@ -163,7 +170,7 @@
                 ${x.description}
             </p>
             <a href="${x.url}"
-              ><button class="block__button">Dowiedz się więce</button></a
+              ><button class="block__button">Dowiedz się więcej</button></a
             >
           </div>
         </div>`).join('')
