@@ -92,6 +92,7 @@
       let editorForm = document.querySelector(".editor__form");
       let events = [];
       let news = document.querySelector(".news");
+      var storageRef = firebase.storage().ref("images");
       //  auth.createUserWithEmailAndPassword('ppxp6@wp.pl', '123456')
       //  auth.signInWithEmailAndPassword(this.state.email, this.state.password)
       auth.onAuthStateChanged(firebaseUser => {
@@ -120,80 +121,85 @@
         add();
       });
 
-      var timestamp = Number(new Date());
-var storageRef = firebase.storage().ref('images');
-// Create a reference to the file we want to download
-var starsRef = storageRef
-
-// Get the download URL
-starsRef.getDownloadURL().then(function(url) {
-  // Insert url into an <img> tag to "download"
-  console.log(url)
-})
-
       function add() {
+        let id = Date.now();
         let title = titleInput.value;
         let subtitle = subtitleInput.value;
         let description = descriptionInput.value;
         let url = urlInput.value;
         let order;
-        let file = fileInput.files[0]
-        console.log(file)
-        storageRef.child('img').put(file);
+        let file = fileInput.files[0];
+        let fileName = file.name;
         if (events.length === 0) {
           order = 0;
         } else {
           order = events[events.length - 1].order + 1;
         }
 
-        // fetch(usersApiUrl + "/events/.json", {
-        //   method: "POST",
-        //   body: JSON.stringify({
-        //     title,
-        //     subtitle,
-        //     description,
-        //     url,
-        //     order
-        //   })
-        // }).then(request());
+        storageRef.child(`${fileName}`).put(file).then(function(snapshot) {
+  console.log(snapshot.metadata.downloadURLs);
+});;
+        
+
+        fetch(`${usersApiUrl}/events/.json`, {
+          method: "POST",
+          body: JSON.stringify({
+            title,
+            subtitle,
+            description,
+            url,
+            order,
+            fileName
+          })
+        });
+      }
+
+      function getUrl(name) {
+        var starsRef = storageRef.child(name);
+        starsRef.getDownloadURL().then(function(url) {
+          // Insert url into an <img> tag to "download"
+          console.log(url);
+        });
       }
 
       const request = async () => {
         const response = await fetch(usersApiUrl + "/events/.json");
         const json = await response.json();
-
+        
         events = Object.entries(json || {}).map(([id, value]) => ({
           id,
           ...value
         }));
+        
         events.sort((a, b) => (a.order > b.order ? 1 : -1));
 
-        news.innerHTML = events
-          .map(
-            x => `<div class="news__block">
-          <div class="block__left">
-            <div class="block__frame"></div>
-            <div
-              style="background-image: url(https://qph.fs.quoracdn.net/main-qimg-a871765b5fb560b3dd09bb850882b6b9.webp)"
-              class="block__img"
-            ></div>
-          </div>
-          <div class="block__right">
-            <h2 class="block__title">${x.title}</h2>
-            <h3 class="block__subtitle">${x.subtitle}</h3>
-            <p class="block__description">
-                ${x.description}
-            </p>
-            <a href="${x.url}"
-              ><button class="block__button">Dowiedz się więcej</button></a
-            >
-          </div>
-        </div>`
-          )
-          .join("");
+        // news.innerHTML = events
+        //   .map(
+        //     x => `<div class="news__block">
+        //   <div class="block__left">
+        //     <div class="block__frame"></div>
+        //     <div
+        //       style="background-image: url(https://qph.fs.quoracdn.net/main-qimg-a871765b5fb560b3dd09bb850882b6b9.webp)"
+        //       class="block__img"
+        //     ></div>
+        //   </div>
+        //   <div class="block__right">
+        //     <h2 class="block__title">${x.title}</h2>
+        //     <h3 class="block__subtitle">${x.subtitle}</h3>
+        //     <p class="block__description">
+        //         ${x.description}
+        //     </p>
+        //     <a href="${x.url}"
+        //       ><button class="block__button">Dowiedz się więcej</button></a
+        //     >
+        //   </div>
+        // </div>`
+        //   )
+        //   .join("");
       };
 
-      request();
+      request()
+      
     </script>
   </body>
 </html>
