@@ -42,6 +42,19 @@
   display: none;
 }
 
+.button--delete {
+  position: absolute;
+  width: 70px;
+  height: 50px;
+  right: 0;
+  background: red;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 5;
+}
+
 /* HERO */
 .hero {
   text-align: center;
@@ -141,6 +154,7 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   background-position: center;
+  background-repeat: no-repeat;
   left: 5%;
 }
 
