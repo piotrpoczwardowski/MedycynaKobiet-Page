@@ -178,9 +178,14 @@
         news.innerHTML = events
           .map(
             event => `<div class="news__block">
-            <button data-fileId='${event.fileId}' data-eventId='${
-              event.id
-            }' class='button--delete'>DELETE</button>
+                <div class="block__edit">
+                <h2>${event.order}</h2>
+              <button class='button__arrow button--up'>Up</button>
+                <button data-fileId='${event.fileId}' data-eventId='${
+                  event.id
+                }' class='button--delete'>DELETE</button>
+                <button class='button__arrow button--down'>Down</button>
+            </div>
           <div class="block__left">
             <div class="block__frame"></div>
             <div
@@ -199,10 +204,22 @@
             >
           </div>
         </div>`
-          ).reverse()
+          )
           .join("");
-
+          
         let deleteButton = document.querySelectorAll(".button--delete");
+        let arrowButton = document.querySelectorAll(".button__arrow");
+        arrowButton.forEach(function(el){
+          el.addEventListener('click', function(){
+            if(this.classList.contains('button--up')){
+              console.log(this.parentElement.parentElement.previousSibling)
+            }
+            if(this.classList.contains('button--down')){
+              
+            }
+          })
+        })
+        
         deleteButton.forEach(function(el) {
           el.addEventListener("click", function() {
             let eventId = this.dataset.eventid;
