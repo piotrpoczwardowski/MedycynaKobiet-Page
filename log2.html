@@ -115,6 +115,16 @@
 
         uptadeEvents();
       });
+      dbRefEvents.on("child_changed", function(snapshot) {
+        var changedPost = snapshot.val();
+
+        events.map(x =>
+          x.id == changedPost.id
+            ? (x.order = changedPost.order)
+            : (x.order = x.order)
+        );
+        uptadeEvents();
+      });
       // Get the data on a post that has been removed
       dbRefEvents.on("child_removed", function(snapshot) {
         events = events.filter(function(obj) {
@@ -173,6 +183,7 @@
       }
 
       function uptadeEvents() {
+        events.sort((a, b) => (a.order > b.order ? 1 : -1));
         news.innerHTML = events
           .map(
             event => `<div data-order='${event.order}' data-fileId='${
@@ -210,23 +221,28 @@
         editButtons.forEach(function(el) {
           el.addEventListener("click", function() {
             // console.log(this.parentElement.parentElement.dataset)
-            let {
+            var {
               order,
               fileid,
               eventid
             } = this.parentElement.parentElement.dataset;
 
             if (this.classList.contains("button--up")) {
-             
               let previous = this.parentElement.parentElement.previousSibling
                 .dataset;
+                previous.order = parseFloat(previous.order)
+               order = parseFloat(order)
+              db.ref(`events/${eventid}/order`).set(previous.order);
+              db.ref(`events/${previous.eventid}/order`).set(order);
             }
             if (this.classList.contains("button--down")) {
-             
               let next = this.parentElement.parentElement.nextSibling.dataset;
+              next.order = parseFloat(next.order)
+              order = parseFloat(order)
+              db.ref(`events/${eventid}/order`).set(next.order);
+              db.ref(`events/${next.eventid}/order`).set(order);
             }
             if (this.classList.contains("button--delete")) {
-            
               storageRef
                 .child(fileid)
                 .delete()
