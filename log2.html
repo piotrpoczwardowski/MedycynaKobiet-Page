@@ -118,7 +118,11 @@
       });
       // Get the data on a post that has been removed
       dbRefEvents.on("child_removed", function(snapshot) {
-       console.log(snapshot.val())
+        
+       events = events.filter(function(obj){
+          return obj.id !== snapshot.key
+        })
+        uptadeEvents()
       });
 
       loginForm.addEventListener("submit", function(e) {
@@ -213,7 +217,7 @@
                   headers: {
                     "Content-Type": "application/json"
                   }
-                }).then(console.log("dsad"));
+                })
               });
           });
         });
