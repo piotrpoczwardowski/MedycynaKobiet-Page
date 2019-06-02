@@ -107,11 +107,18 @@
           loginForm.style.display = "flex";
         }
       });
+      
 
       dbRefEvents.on("child_added", function(snapshot) {
         var snap = snapshot.val();
-        events.push(snap)
-        uptadeEvents()
+        snap.id = snapshot.key;
+        events.push(snap);
+
+        uptadeEvents();
+      });
+      // Get the data on a post that has been removed
+      dbRefEvents.on("child_removed", function(snapshot) {
+       console.log(snapshot.val())
       });
 
       loginForm.addEventListener("submit", function(e) {
@@ -163,7 +170,7 @@
           });
       }
 
-      function uptadeEvents(){
+      function uptadeEvents() {
         news.innerHTML = events
           .map(
             event => `<div class="news__block">
@@ -190,9 +197,7 @@
         </div>`
           )
           .join("");
-      }
 
-      function addDelete(){
         let deleteButton = document.querySelectorAll(".button--delete");
         deleteButton.forEach(function(el) {
           el.addEventListener("click", function() {
@@ -212,6 +217,21 @@
               });
           });
         });
+      }
+
+      function check(){
+        dbRefEvents.on("value", function(snapshot) {
+ 
+ events = []
+  var snap = snapshot.val();
+          
+      
+        events.push(snap);
+        uptadeEvents()
+
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
       }
     </script>
   </body>
