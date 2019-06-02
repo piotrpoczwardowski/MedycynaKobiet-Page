@@ -107,7 +107,6 @@
           loginForm.style.display = "flex";
         }
       });
-      
 
       dbRefEvents.on("child_added", function(snapshot) {
         var snap = snapshot.val();
@@ -118,11 +117,10 @@
       });
       // Get the data on a post that has been removed
       dbRefEvents.on("child_removed", function(snapshot) {
-        
-       events = events.filter(function(obj){
-          return obj.id !== snapshot.key
-        })
-        uptadeEvents()
+        events = events.filter(function(obj) {
+          return obj.id !== snapshot.key;
+        });
+        uptadeEvents();
       });
 
       loginForm.addEventListener("submit", function(e) {
@@ -177,14 +175,14 @@
       function uptadeEvents() {
         news.innerHTML = events
           .map(
-            event => `<div class="news__block">
-                <div class="block__edit">
+            event => `<div data-order='${event.order}' data-fileId='${
+              event.fileId
+            }' data-eventId='${event.id}'  class="news__block">
+                <div  class="block__edit">
                 <h2>${event.order}</h2>
-              <button class='button__arrow button--up'>Up</button>
-                <button data-fileId='${event.fileId}' data-eventId='${
-                  event.id
-                }' class='button--delete'>DELETE</button>
-                <button class='button__arrow button--down'>Down</button>
+              <button class='edit__button button--up'>Up</button>
+                <button class='edit__button button--delete'>DELETE</button>
+                <button class='edit__button button--down'>Down</button>
             </div>
           <div class="block__left">
             <div class="block__frame"></div>
@@ -206,53 +204,59 @@
         </div>`
           )
           .join("");
-          
-        let deleteButton = document.querySelectorAll(".button--delete");
-        let arrowButton = document.querySelectorAll(".button__arrow");
-        arrowButton.forEach(function(el){
-          el.addEventListener('click', function(){
-            if(this.classList.contains('button--up')){
-              console.log(this.parentElement.parentElement.previousSibling)
-            }
-            if(this.classList.contains('button--down')){
-              
-            }
-          })
-        })
-        
-        deleteButton.forEach(function(el) {
-          el.addEventListener("click", function() {
-            let eventId = this.dataset.eventid;
-            let fileId = this.dataset.fileid;
 
-            storageRef
-              .child(fileId)
-              .delete()
-              .then(function() {
-                fetch(usersApiUrl + `events/${eventId}.json`, {
-                  method: "DELETE",
-                  headers: {
-                    "Content-Type": "application/json"
-                  }
-                })
-              });
+        let editButtons = document.querySelectorAll(".edit__button");
+
+        editButtons.forEach(function(el) {
+          el.addEventListener("click", function() {
+            // console.log(this.parentElement.parentElement.dataset)
+            let {
+              order,
+              fileid,
+              eventid
+            } = this.parentElement.parentElement.dataset;
+
+            if (this.classList.contains("button--up")) {
+             
+              let previous = this.parentElement.parentElement.previousSibling
+                .dataset;
+            }
+            if (this.classList.contains("button--down")) {
+             
+              let next = this.parentElement.parentElement.nextSibling.dataset;
+            }
+            if (this.classList.contains("button--delete")) {
+            
+              storageRef
+                .child(fileid)
+                .delete()
+                .then(function() {
+                  fetch(usersApiUrl + `events/${eventid}.json`, {
+                    method: "DELETE",
+                    headers: {
+                      "Content-Type": "application/json"
+                    }
+                  });
+                });
+            }
           });
         });
       }
 
-      function check(){
-        dbRefEvents.on("value", function(snapshot) {
- 
- events = []
-  var snap = snapshot.val();
-          
-      
-        events.push(snap);
-        uptadeEvents()
+      function check() {
+        dbRefEvents.on(
+          "value",
+          function(snapshot) {
+            events = [];
+            var snap = snapshot.val();
 
-}, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
+            events.push(snap);
+            uptadeEvents();
+          },
+          function(errorObject) {
+            console.log("The read failed: " + errorObject.code);
+          }
+        );
       }
     </script>
   </body>
