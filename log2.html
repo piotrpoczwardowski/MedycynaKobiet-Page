@@ -63,7 +63,6 @@
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
     <script>
-      // Your web app's Firebase configuration
       const usersApiUrl = "https://medycynakobiet-3713e.firebaseio.com/";
       var firebaseConfig = {
         apiKey: "AIzaSyAzNWdg_8AUfEDn6gPHfstUSzkWAPmYh0s",
@@ -74,12 +73,12 @@
         messagingSenderId: "712056412278",
         appId: "1:712056412278:web:8498a7b21d6e2263"
       };
-      // Initialize Firebase
+
       firebase.initializeApp(firebaseConfig);
       let auth = firebase.auth();
       let db = firebase.database();
       let dbRef = db.ref();
-   
+      let dbRefEvents = db.ref("events");
       var storageRef = firebase.storage().ref("images");
 
       let logout = document.querySelector(".logout");
@@ -94,10 +93,9 @@
       let fileInput = document.querySelector(".file");
       let editorForm = document.querySelector(".editor__form");
       let news = document.querySelector(".news");
-      
+
       let events = [];
-      //  auth.createUserWithEmailAndPassword('ppxp6@wp.pl', '123456')
-      //  auth.signInWithEmailAndPassword(this.state.email, this.state.password)
+
       auth.onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
           console.log("user");
@@ -108,6 +106,12 @@
           editor.style.display = "none";
           loginForm.style.display = "flex";
         }
+      });
+
+      dbRefEvents.on("child_added", function(snapshot) {
+        var snap = snapshot.val();
+        events.push(snap)
+        uptadeEvents()
       });
 
       loginForm.addEventListener("submit", function(e) {
@@ -143,7 +147,6 @@
           .child(`${id}`)
           .put(file)
           .then(function(snapshot) {
-            console.log(snapshot);
             let fileURL = snapshot.metadata.downloadURLs[0];
             fetch(`${usersApiUrl}/events/.json`, {
               method: "POST",
@@ -156,21 +159,11 @@
                 fileURL,
                 fileId: id
               })
-            }).then(request());
+            });
           });
       }
 
-      const request = async () => {
-        const response = await fetch(usersApiUrl + "/events/.json");
-        const json = await response.json();
-
-        events = Object.entries(json || {}).map(([id, value]) => ({
-          id,
-          ...value
-        }));
-
-        events.sort((a, b) => (a.order > b.order ? 1 : -1));
-
+      function uptadeEvents(){
         news.innerHTML = events
           .map(
             event => `<div class="news__block">
@@ -197,7 +190,9 @@
         </div>`
           )
           .join("");
+      }
 
+      function addDelete(){
         let deleteButton = document.querySelectorAll(".button--delete");
         deleteButton.forEach(function(el) {
           el.addEventListener("click", function() {
@@ -217,9 +212,7 @@
               });
           });
         });
-      };
-
-      request();
+      }
     </script>
   </body>
 </html>
