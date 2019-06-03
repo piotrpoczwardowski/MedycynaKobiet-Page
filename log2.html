@@ -118,11 +118,11 @@
       dbRefEvents.on("child_changed", function(snapshot) {
         var changedPost = snapshot.val();
 
-        events.map(x =>
-          x.id == changedPost.id
-            ? (x.order = changedPost.order)
-            : (x.order = x.order)
-        );
+        events = events.filter(function(obj) {
+          return obj.id !== snapshot.key;
+        });
+        changedPost.id = snapshot.key;
+        events.push(changedPost);
         uptadeEvents();
       });
       // Get the data on a post that has been removed
@@ -230,15 +230,17 @@
             if (this.classList.contains("button--up")) {
               let previous = this.parentElement.parentElement.previousSibling
                 .dataset;
-                previous.order = parseFloat(previous.order)
-               order = parseFloat(order)
+              previous.order = parseFloat(previous.order);
+              order = parseFloat(order);
+              console.log(this.parentElement.parentElement.previousSibling);
+              //  console.log( this.parentElement.parentElement.dataset)
               db.ref(`events/${eventid}/order`).set(previous.order);
               db.ref(`events/${previous.eventid}/order`).set(order);
             }
             if (this.classList.contains("button--down")) {
               let next = this.parentElement.parentElement.nextSibling.dataset;
-              next.order = parseFloat(next.order)
-              order = parseFloat(order)
+              next.order = parseFloat(next.order);
+              order = parseFloat(order);
               db.ref(`events/${eventid}/order`).set(next.order);
               db.ref(`events/${next.eventid}/order`).set(order);
             }
@@ -257,22 +259,6 @@
             }
           });
         });
-      }
-
-      function check() {
-        dbRefEvents.on(
-          "value",
-          function(snapshot) {
-            events = [];
-            var snap = snapshot.val();
-
-            events.push(snap);
-            uptadeEvents();
-          },
-          function(errorObject) {
-            console.log("The read failed: " + errorObject.code);
-          }
-        );
       }
     </script>
   </body>
