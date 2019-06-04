@@ -267,3 +267,90 @@ line-height: 45px;
   font-size: 18px;
   font-weight: bold;
 }
+@media (max-width: 1048px) {
+  
+  
+  .news__block {
+    display: block;
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 80px;
+  }
+  .block__left {
+    width: 100%;
+    position: relative;
+  }
+  .block__frame {
+    display: none;
+  }
+  .block__img {
+    height: 450px;
+    position: relative;
+    width: 80%;
+    border: red 2px solid;
+    top: auto;
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+   margin: 0 auto;
+    left: 0%;
+  }
+  .block__right {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    font-family: caviar;
+  
+    position: relative;
+  }
+  .block__title {
+    margin: 0 auto;
+    font-size: 50px;
+    font-weight: lighter;
+    width: 80%;
+    margin-top: 20px;
+  }
+  .block__subtitle {
+    margin: 0 auto;
+    font-weight: lighter;
+    font-size: 25px;
+    margin-top: 15px;
+    width: 100%;
+  }
+  .block__description {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 25px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .block__button {
+   
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    bottom: 0;
+    margin-top: 40px;
+  }
+  
+}
+
+@media (max-width: 756px) {
+  
+  .hero__logo {
+    width: 100%;
+  }
+
+}
+@media (max-width: 596px) {
+  
+  .about__description{
+    padding: 0 10px;
+  }
+  
+}
