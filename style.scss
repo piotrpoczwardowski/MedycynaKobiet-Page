@@ -3,7 +3,7 @@ $heroMargin: 40px;
 $description: 25px;
 %button {
   background: none;
-  border: 2px solid black;
+  border: 1.5px solid black;
   cursor: pointer;
   font-family: caviar;
   padding-bottom: 2px;
@@ -23,33 +23,33 @@ $description: 25px;
 }
 
 /* LOG */
-.log{
+.log {
   display: flex;
   flex-direction: column;
   width: 300px;
   margin: 50px auto;
-  input{
+  input {
     height: 30px;
     font-size: 20px;
   }
-  button{
+  button {
     height: 40px;
   }
 }
 
-.editor{
+.editor {
   display: none;
 }
-.block__edit{
+.block__edit {
   height: 100%;
   position: absolute;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   right: 0;
   z-index: 1;
-  button{
+  button {
     height: 50px;
     width: 100px;
   }
@@ -58,6 +58,8 @@ $description: 25px;
 /* HERO */
 .hero {
   text-align: center;
+  background: url(./header.png);
+  background-size: cover;
 }
 
 .hero__logo {
@@ -83,7 +85,7 @@ $description: 25px;
   height: 60px;
   width: 250px;
 }
-.hero__icons {
+.icons {
   font-size: 35px;
 
   display: flex;
@@ -95,12 +97,26 @@ $description: 25px;
   img {
     height: 40px;
   }
+  
+}
+.hero__icons{
+  padding-bottom: 400px;
 }
 
 /* ABOUT */
 .about {
   text-align: center;
-  margin-top: 150px;
+ 
+  
+}
+.about__wave{
+  margin-top: -210px;
+}
+.about__image{
+  height: 800px;
+  background: url(./about.png);
+  background-size: cover;
+  background-position-y: -100px;
 }
 .about__title {
   font-size: $title;
@@ -130,6 +146,7 @@ $description: 25px;
   width: 90%;
   margin: 0 auto;
   position: relative;
+  margin-top: 80px;
 }
 .block__left {
   width: 50%;
@@ -145,6 +162,7 @@ $description: 25px;
   height: 450px;
   position: absolute;
   width: 100%;
+  border: red 2px solid;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -154,40 +172,86 @@ $description: 25px;
 }
 .block__right {
   width: 50%;
- text-align: center;
- font-family: caviar;
+  text-align: center;
+  font-family: caviar;
 
- position: relative;
-  
+  position: relative;
 }
-.block__title{
+.block__title {
+  margin: 0 auto;
   font-size: 50px;
   font-weight: lighter;
+  width: 70%;
 }
-.block__subtitle{
+.block__subtitle {
+  margin: 0 auto;
   font-weight: lighter;
   font-size: 25px;
   margin-top: 15px;
+  width: 70%;
 }
-.block__description{
- width: 70%;
- margin: 0 auto;
-margin-top: 25px;
-font-size: 25px;
-line-height: 30px;
-
-  
+.block__description {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 25px;
+  font-size: 25px;
+  line-height: 30px;
 }
-.block__button{
+.block__button {
   @extend %button;
   font-size: 25px;
   width: 250px;
   height: 60px;
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   position: absolute;
   bottom: 5%;
- 
+}
+
+//FOOTER
+
+.footer {
+  text-align: center;
+  font-family: caviar;
+  font-size: $description;
+  margin-top: 50px;
+}
+
+.footer__text {
+line-height: 45px;
+
+}
+.footer__button {
+  margin-top: 25px;
+  @extend %button;
+  font-size: 23px;
+  height: 60px;
+  width: 250px;
+  
+}
+.footer__title {
+  margin-top: 40px;
+  font-size: $title;
+  font-family: flanella;
+  font-weight: lighter;
+}
+.footer__email {
+  margin-top: 25px;
+}
+.footer__image{
+  height: 900px;
+  background: url(./footer.png);
+  background-size: cover;
+  position: relative;
+}
+.footer__sign{
+  position: absolute;
+  width: 90%;
+  margin: 0 auto;
+  bottom: 20px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
 }

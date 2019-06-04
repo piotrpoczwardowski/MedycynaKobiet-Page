@@ -1,6 +1,6 @@
-.hero__CTA, .block__button {
+.hero__CTA, .block__button, .footer__button {
   background: none;
-  border: 2px solid black;
+  border: 1.5px solid black;
   cursor: pointer;
   font-family: caviar;
   padding-bottom: 2px;
@@ -60,6 +60,8 @@
 /* HERO */
 .hero {
   text-align: center;
+  background: url(./header.png);
+  background-size: cover;
 }
 
 .hero__logo {
@@ -87,7 +89,7 @@
   width: 250px;
 }
 
-.hero__icons {
+.icons {
   font-size: 35px;
   display: flex;
   justify-content: space-around;
@@ -97,14 +99,28 @@
   font-weight: lighter;
 }
 
-.hero__icons img {
+.icons img {
   height: 40px;
+}
+
+.hero__icons {
+  padding-bottom: 400px;
 }
 
 /* ABOUT */
 .about {
   text-align: center;
-  margin-top: 150px;
+}
+
+.about__wave {
+  margin-top: -210px;
+}
+
+.about__image {
+  height: 800px;
+  background: url(./about.png);
+  background-size: cover;
+  background-position-y: -100px;
 }
 
 .about__title {
@@ -135,6 +151,7 @@
   width: 90%;
   margin: 0 auto;
   position: relative;
+  margin-top: 80px;
 }
 
 .block__left {
@@ -153,6 +170,7 @@
   height: 450px;
   position: absolute;
   width: 100%;
+  border: red 2px solid;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -169,14 +187,18 @@
 }
 
 .block__title {
+  margin: 0 auto;
   font-size: 50px;
   font-weight: lighter;
+  width: 70%;
 }
 
 .block__subtitle {
+  margin: 0 auto;
   font-weight: lighter;
   font-size: 25px;
   margin-top: 15px;
+  width: 70%;
 }
 
 .block__description {
@@ -197,4 +219,50 @@
   margin-right: auto;
   position: absolute;
   bottom: 5%;
+}
+
+.footer {
+  text-align: center;
+  font-family: caviar;
+  font-size: 25px;
+  margin-top: 50px;
+}
+
+.footer__text {
+  line-height: 45px;
+}
+
+.footer__button {
+  margin-top: 25px;
+  font-size: 23px;
+  height: 60px;
+  width: 250px;
+}
+
+.footer__title {
+  margin-top: 40px;
+  font-size: 90px;
+  font-family: flanella;
+  font-weight: lighter;
+}
+
+.footer__email {
+  margin-top: 25px;
+}
+
+.footer__image {
+  height: 900px;
+  background: url(./footer.png);
+  background-size: cover;
+  position: relative;
+}
+
+.footer__sign {
+  position: absolute;
+  width: 90%;
+  margin: 0 auto;
+  bottom: 20px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
 }

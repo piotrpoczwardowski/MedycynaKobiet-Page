@@ -232,8 +232,7 @@
                 .dataset;
               previous.order = parseFloat(previous.order);
               order = parseFloat(order);
-              console.log(this.parentElement.parentElement.previousSibling);
-              //  console.log( this.parentElement.parentElement.dataset)
+
               db.ref(`events/${eventid}/order`).set(previous.order);
               db.ref(`events/${previous.eventid}/order`).set(order);
             }
