@@ -24,16 +24,23 @@
           - w moim odczuciu jest nią głównie siostrzeństwo - <br />
           uważna obecność dla drugiej Kobiety.
         </h2>
-        <a target="_blank" href="https://www.facebook.com/groups/952385061559254/about/"
+        <a
+          target="_blank"
+          href="https://www.facebook.com/groups/952385061559254/about/"
           ><button class="hero__CTA">
             Dowiedz się więcej
           </button></a
         >
         <div class="icons hero__icons">
-          <a href="https://www.instagram.com/medycyna_kobiet/"><img src="./instagram.png" alt=""/></a>
-          <a href="https://www.facebook.com/groups/952385061559254/"><img src="./facebook.png" alt=""/></a>
+          <a target="_blank" href="https://www.instagram.com/medycyna_kobiet/"
+            ><img src="./instagram.png" alt=""
+          /></a>
+          <a
+            target="_blank"
+            href="https://www.facebook.com/groups/952385061559254/"
+            ><img src="./facebook.png" alt=""
+          /></a>
         </div>
-       
       </div>
       <div class="hero__wave" style="height: 150px; overflow: hidden;">
         <svg
@@ -95,28 +102,7 @@
         <h1 class="news__title">
           Spotkajmy sie tutaj
         </h1>
-        <div class="news">
-          <div class="news__block">
-            <div class="block__left">
-              <div class="block__frame"></div>
-              <div
-                style="background-image: url(https://qph.fs.quoracdn.net/main-qimg-a871765b5fb560b3dd09bb850882b6b9.webp)"
-                class="block__img"
-              ></div>
-            </div>
-            <div class="block__right">
-              <h2 class="block__title">Piątek, 28 czerwca</h2>
-              <h3 class="block__subtitle">Ceremonia Kakao w Kręgu Kobiet</h3>
-              <p class="block__description">
-                W Kręgu spotykamy się z potrzeby wyrażenia tęsknoty za
-                dzieleniem miłością, bliskim spotkaniem serce w serce...
-              </p>
-              <a href="https://www.facebook.com/MojaaPrzestrzen/"
-                ><button class="block__button">Dowiedz się więce</button></a
-              >
-            </div>
-          </div>
-        </div>
+        <div class="news"></div>
       </div>
       <footer class="footer">
         <div class="footer__text">
@@ -124,9 +110,12 @@
           <br />
           Dołącz do mojej przestrzeni, aby nic Cię nie omineło.
         </div>
-        <button class="footer__button">
-          Dołącz teraz
-        </button>
+        <a target="_blank" href="https://www.facebook.com/MojaaPrzestrzen/"
+          ><button class="footer__button">
+            Dołącz teraz
+          </button></a
+        >
+
         <h1 class="footer__title">
           Kontakt
         </h1>
@@ -134,8 +123,14 @@
           mojaprzestrzen@protonmail.com
         </p>
         <div class="icons">
-          <a href="https://www.instagram.com/medycyna_kobiet/"><img src="./instagram.png" alt=""/></a>
-          <a href="https://www.facebook.com/groups/952385061559254/"><img src="./facebook.png" alt=""/></a>
+          <a target="_blank" href="https://www.instagram.com/medycyna_kobiet/"
+            ><img src="./instagram.png" alt=""
+          /></a>
+          <a
+            target="_blank"
+            href="https://www.facebook.com/groups/952385061559254/"
+            ><img src="./facebook.png" alt=""
+          /></a>
         </div>
         <div class="footer__image">
           <div class="footer__sign">
@@ -194,13 +189,14 @@
               <p class="block__description">
                   ${event.description}
               </p>
-              <a href="${event.url}"
+              <a target="_blank" href="${event.url}"
                 ><button class="block__button">Dowiedz się więcej</button></a
               >
             </div>
           </div>`
           )
-          .reverse().join("");
+          .reverse()
+          .join("");
       }
     </script>
   </body>
