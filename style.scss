@@ -7,6 +7,14 @@ $description: 25px;
   cursor: pointer;
   font-family: caviar;
   padding-bottom: 2px;
+  background: linear-gradient(white , rgba(237, 30, 120, 0.377));
+ 
+  background-size: 100% 400%;
+  transition: background-size 0.5s;
+
+  &:hover{
+    background-size: 100% 100%;
+  }
 }
 
 @font-face {
@@ -89,6 +97,8 @@ $description: 25px;
   font-size: 23px;
   height: 60px;
   width: 250px;
+ 
+ 
 }
 .icons {
   font-size: 35px;

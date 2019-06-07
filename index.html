@@ -42,17 +42,27 @@
           /></a>
         </div>
       </div>
-      <div class="hero__wave" style="height: 150px; overflow: hidden;">
+      <div class="hero__wave" style="height: 150px;overflow: hidden">
         <svg
           viewBox="0 0 500 150"
           preserveAspectRatio="none"
           style="height: 100%; width: 100%;"
         >
           <path
-            d="M-43.72,93.25 C112.24,21.20 209.18,212.66 551.74,19.23 L500.00,150.00 L0.00,150.00 Z"
+            d="M0.00,49.98 C283.52,252.13 350.85,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
             style="stroke: none; fill: rgb(255, 255, 255);"
           ></path>
         </svg>
+        <!-- <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%;"
+        >
+          <path
+            d="M0.00,49.98 C283.52,252.13 350.85,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: rgb(117, 143, 165);"
+          ></path>
+        </svg> -->
       </div>
       <div class="about">
         <h1 class="about__title">
@@ -159,7 +169,25 @@
       let dbRefEvents = db.ref("events");
       var storageRef = firebase.storage().ref("images");
       let news = document.querySelector(".news");
-
+      let heroWaveContener = document.querySelector(".hero__wave");
+      var heroWave = document.querySelector(".hero__wave svg");
+      let content = document.querySelector(".content");
+      let x = 0;
+      // setInterval(function() {
+        
+      //   heroWave.style.marginLeft = x + "px";
+      //   let cln = heroWave.cloneNode(true)
+      //  let heroWaveEnd = heroWave.getBoundingClientRect().x + heroWave.getBoundingClientRect().width
+      //   x -= 10;
+      
+        
+      //   if(heroWaveEnd === content.getBoundingClientRect().x){
+          
+      //     heroWaveContener.appendChild(cln)
+      //     x= 0
+      //   }
+      // }, 16);
+      
       let events = [];
       dbRefEvents.on("child_added", function(snapshot) {
         var snap = snapshot.val();
