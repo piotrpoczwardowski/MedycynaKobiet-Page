@@ -7,13 +7,20 @@ $description: 25px;
   cursor: pointer;
   font-family: caviar;
   padding-bottom: 2px;
-  background: linear-gradient(white , rgba(237, 30, 120, 0.377));
- 
+  background: linear-gradient(white, rgba(237, 30, 120, 0.377));
+
   background-size: 100% 400%;
   transition: background-size 0.5s;
 
-  &:hover{
+  &:hover {
     background-size: 100% 100%;
+  }
+
+  @media (max-width: 1148px) {
+    &:hover {
+      background-size: 100% 400%;
+    }
+  
   }
 }
 
@@ -28,9 +35,10 @@ $description: 25px;
 * {
   padding: 0;
   margin: 0;
+  
 }
 
-.content{
+.content {
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -40,14 +48,40 @@ $description: 25px;
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin: 50px auto;
+  margin: 0px auto;
   input {
     height: 30px;
     font-size: 20px;
+    margin-top: 10px;
+    border: 2px solid purple;
+    border-radius: 10px;
   }
   button {
     height: 40px;
+    background: purple;
+    border: none;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
   }
+}
+.file + label{
+  background: red;
+}
+.logout{
+  height: 40px;
+    background: purple;
+    border: none;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 200px;
+    position: relative;
+    right: 0;
 }
 
 .editor {
@@ -55,6 +89,7 @@ $description: 25px;
 }
 .block__edit {
   height: 100%;
+  width: 70px;
   position: absolute;
 
   display: flex;
@@ -63,9 +98,29 @@ $description: 25px;
   right: 0;
   z-index: 1;
   button {
-    height: 50px;
-    width: 100px;
+    height: 40px;
+    width: 100%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
   }
+}
+.button--delete {
+  background: red;
+  
+ 
+}
+.button--up {
+  -webkit-clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+  background: rgb(157, 59, 202);
+  
+}
+.button--down{
+  -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
+clip-path: polygon(50% 100%, 0 0, 100% 0);
+background: rgb(157, 59, 202);
 }
 
 /* HERO */
@@ -97,8 +152,6 @@ $description: 25px;
   font-size: 23px;
   height: 60px;
   width: 250px;
- 
- 
 }
 .icons {
   font-size: 35px;
@@ -112,26 +165,22 @@ $description: 25px;
   img {
     height: 40px;
   }
-  
 }
-.hero__icons{
+.hero__icons {
   padding-bottom: 400px;
 }
-.hero__wave{
+.hero__wave {
   margin-top: -120px;
 }
 
 /* ABOUT */
 .about {
   text-align: center;
-
-  
 }
-.about__wave{
+.about__wave {
   margin-top: -220px;
-  
 }
-.about__image{
+.about__image {
   height: 800px;
   background: url(./about.png);
   background-size: cover;
@@ -145,7 +194,7 @@ $description: 25px;
 .about__description {
   font-size: $description;
   padding: 0 50px;
- 
+
   margin-top: 50px;
   line-height: 35px;
   font-family: caviar;
@@ -184,7 +233,7 @@ $description: 25px;
   height: 450px;
   position: absolute;
   width: 100%;
-  
+
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -242,8 +291,7 @@ $description: 25px;
 }
 
 .footer__text {
-line-height: 45px;
-
+  line-height: 45px;
 }
 .footer__button {
   margin-top: 25px;
@@ -251,7 +299,6 @@ line-height: 45px;
   font-size: 23px;
   height: 60px;
   width: 250px;
-  
 }
 .footer__title {
   margin-top: 40px;
@@ -262,13 +309,13 @@ line-height: 45px;
 .footer__email {
   margin-top: 25px;
 }
-.footer__image{
+.footer__image {
   height: 900px;
   background: url(./footer.png);
   background-size: cover;
   position: relative;
 }
-.footer__sign{
+.footer__sign {
   position: absolute;
   width: 90%;
   margin: 0 auto;
@@ -276,17 +323,14 @@ line-height: 45px;
   color: white;
   font-size: 18px;
   font-weight: bold;
-  
 }
 @media (max-width: 1148px) {
-.hero{
-  background-position-y: 150px;
-  background-repeat: no-repeat;
-}
+  .hero {
+    background-position-y: 150px;
+    background-repeat: no-repeat;
+  }
 }
 @media (max-width: 1048px) {
-  
-  
   .news__block {
     display: block;
     height: auto;
@@ -306,11 +350,11 @@ line-height: 45px;
     height: 450px;
     position: relative;
     width: 80%;
-   
+
     top: auto;
     -ms-transform: translateY(0%);
     transform: translateY(0%);
-   margin: 0 auto;
+    margin: 0 auto;
     left: 0%;
   }
   .block__right {
@@ -318,7 +362,7 @@ line-height: 45px;
     width: 80%;
     text-align: center;
     font-family: caviar;
-  
+
     position: relative;
   }
   .block__title {
@@ -343,56 +387,48 @@ line-height: 45px;
     line-height: 30px;
   }
   .block__button {
-   
     font-size: 25px;
     width: 250px;
     height: 60px;
-    
+
     margin-left: auto;
     margin-right: auto;
     position: relative;
     bottom: 0;
     margin-top: 40px;
   }
-  
 }
 
 @media (max-width: 756px) {
-  
   .hero__logo {
     width: 100%;
   }
-
 }
 @media (max-width: 688px) {
-.about__image{
-  background-repeat: no-repeat;
-  background-position-x: -350px;
-}
+  .about__image {
+    background-repeat: no-repeat;
+    background-position-x: -350px;
+  }
 }
 @media (max-width: 596px) {
-  
-  .about__description{
+  .about__description {
     padding: 0 10px;
   }
-  
 }
 @media (max-width: 524px) {
-  
-  .hero{
+  .hero {
     background-position-x: -150px;
   }
-  
 }
 @media (max-width: 420px) {
-  .footer__text{
-    br{
+  .footer__text {
+    br {
       display: none;
     }
   }
 }
 @media (max-width: 400px) {
-  .block__img{
+  .block__img {
     height: 200px;
   }
 }

@@ -13,6 +13,12 @@
   background-size: 100% 100%;
 }
 
+@media (max-width: 1148px) {
+  .hero__CTA:hover, .block__button:hover, .footer__button:hover {
+    background-size: 100% 400%;
+  }
+}
+
 @font-face {
   font-family: caviar;
   src: url(/fonts/CaviarDreams.ttf);
@@ -38,16 +44,44 @@
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin: 50px auto;
+  margin: 0px auto;
 }
 
 .log input {
   height: 30px;
   font-size: 20px;
+  margin-top: 10px;
+  border: 2px solid purple;
+  border-radius: 10px;
 }
 
 .log button {
   height: 40px;
+  background: purple;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.file + label {
+  background: red;
+}
+
+.logout {
+  height: 40px;
+  background: purple;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 200px;
+  position: relative;
+  right: 0;
 }
 
 .editor {
@@ -56,6 +90,7 @@
 
 .block__edit {
   height: 100%;
+  width: 70px;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -65,8 +100,28 @@
 }
 
 .block__edit button {
-  height: 50px;
-  width: 100px;
+  height: 40px;
+  width: 100%;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button--delete {
+  background: red;
+}
+
+.button--up {
+  -webkit-clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+  background: #9d3bca;
+}
+
+.button--down {
+  -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  background: #9d3bca;
 }
 
 /* HERO */
