@@ -185,10 +185,14 @@
       let heroWaveContener = document.querySelector(".hero__wave");
       var heroWave = document.querySelector(".hero__wave svg");
       let content = document.querySelector(".content");
+      let menuIcon = document.querySelector('.menu__icon')
+      let menuList = document.querySelector('.menu__list')
       let x = 0;
-     
-      
       let events = [];
+      
+    menuIcon.addEventListener('click', function(){
+      menuList.classList.toggle('show')
+    })
       dbRefEvents.on("child_added", function(snapshot) {
         var snap = snapshot.val();
         snap.id = snapshot.key;

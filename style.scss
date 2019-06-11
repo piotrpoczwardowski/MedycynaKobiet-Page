@@ -119,8 +119,9 @@ $description: 25px;
   background: rgb(157, 59, 202);
 }
 /* MENU */
-.menu{
+.menu {
   position: relative;
+  
 }
 .menu__circle {
   display: flex;
@@ -136,7 +137,7 @@ $description: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
- 
+
   cursor: pointer;
   background: linear-gradient(white, rgba(237, 30, 120, 0.377));
 
@@ -151,29 +152,37 @@ $description: 25px;
     height: 30px;
   }
 }
-.menu__list{
-width: 90%;
-left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
-background: pink;
-position: fixed;
+.menu__list {
+  width: 90%;
+height: 0px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgb(255, 255, 255);
+  position: fixed;
+  transition: height 1s;
+  overflow: hidden;
+  
 
-  ul{
-    
+  ul {
+    padding-top: 25px;
     display: flex;
     justify-content: space-around;
     list-style: none;
+    
 
-    a{
+    a {
       text-decoration: none;
       color: black;
       font-size: 30px;
+      
     }
   }
 }
-
+.show{
+  height: 80px;
+}
 /* HERO */
 .hero {
   text-align: center;
