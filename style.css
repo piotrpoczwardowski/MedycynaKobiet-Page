@@ -32,6 +32,7 @@
 * {
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 .content {
@@ -193,14 +194,11 @@
 }
 
 .menu {
-  width: 50%;
-  background: rgba(0, 0, 255, 0.308);
+  width: 300px;
   position: fixed;
-  max-width: 1600px;
   overflow: hidden;
-  top: 100px;
   z-index: 20;
-  float: right;
+  right: 0%;
 }
 
 .menu__top, .menu__bottom {
@@ -212,15 +210,16 @@
   position: relative;
   z-index: 1;
   background: red;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin-right: 110px;
+  margin-right: 20px;
   cursor: pointer;
   border: 1px solid black;
+  top: 50px;
   background: linear-gradient(white, rgba(237, 30, 120, 0.377));
   background-size: 100% 400%;
   transition: background-size 0.5s;
@@ -243,14 +242,16 @@
 
 .menu__list {
   position: relative;
+  width: 100%;
   list-style: none;
   background: rgba(255, 255, 255, 0.815);
-  width: 300px;
   text-align: center;
-  margin-top: -100px;
-  margin-right: -300px;
   transition: margin-right 0.3s ease-in;
-  padding-top: 150px;
+  padding-top: 80px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin-right: -300px;
+  top: -20px;
 }
 
 .menu__list li {
@@ -261,6 +262,11 @@
   text-decoration: none;
   color: black;
   font-size: 30px;
+  transition: color 0.3s;
+}
+
+.menu__list a:hover {
+  color: rgba(237, 30, 120, 0.377);
 }
 
 .show {
