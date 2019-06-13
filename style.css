@@ -193,12 +193,14 @@
 }
 
 .menu {
-  width: 100%;
+  width: 50%;
+  background: rgba(0, 0, 255, 0.308);
   position: fixed;
   max-width: 1600px;
   overflow: hidden;
   top: 100px;
   z-index: 20;
+  float: right;
 }
 
 .menu__top, .menu__bottom {
@@ -242,7 +244,7 @@
 .menu__list {
   position: relative;
   list-style: none;
-  background: #e93bb5;
+  background: rgba(255, 255, 255, 0.815);
   width: 300px;
   text-align: center;
   margin-top: -100px;
