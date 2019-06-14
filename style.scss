@@ -9,7 +9,7 @@ $description: 25px;
   padding-bottom: 2px;
   background: linear-gradient(white, rgba(237, 30, 120, 0.377));
 
-  background-size: 100% 400%;
+  background-size: 100% 600%;
   transition: background-size 0.5s;
 
   &:hover {
@@ -29,7 +29,7 @@ $description: 25px;
 }
 @font-face {
   font-family: flanella;
-  src: url(/fonts/Flanella.ttf);
+  src: url(/fonts/Havana-Regular.ttf);
 }
 * {
   padding: 0;
@@ -222,7 +222,7 @@ $description: 25px;
 
   background: linear-gradient(white, rgba(237, 30, 120, 0.377));
 
-  background-size: 100% 400%;
+  background-size: 100% 600%;
   transition: background-size 0.5s;
 
   &:hover {
@@ -260,7 +260,7 @@ width: 100%;
     color: black;
     font-size: 30px;
     transition: color 0.3s;
-
+    font-family: caviar;
     &:hover{
       color: rgba(237, 30, 120, 0.377);
     }
@@ -278,14 +278,15 @@ width: 100%;
 }
 
 .hero__logo {
-  width: 700px;
+  width: 200px;
   margin-top: 80px;
 }
 
 .hero__title {
   font-weight: lighter;
   font-size: $title;
-  display: none;
+  font-family: flanella;
+ 
 }
 .hero__description {
   font-weight: lighter;
@@ -549,7 +550,7 @@ width: 100%;
 
 @media (max-width: 756px) {
   .hero__logo {
-    width: 100%;
+    width: 30%;
   }
 }
 @media (max-width: 688px) {
@@ -561,6 +562,9 @@ width: 100%;
 @media (max-width: 596px) {
   .about__description {
     padding: 0 10px;
+  }
+  .hero__title{
+    font-size: 60px;
   }
 }
 @media (max-width: 524px) {
@@ -578,5 +582,8 @@ width: 100%;
 @media (max-width: 400px) {
   .block__img {
     height: 200px;
+  }
+  .hero__title{
+    font-size: 40px;
   }
 }
