@@ -18,19 +18,19 @@
       <div class="menu">
         <div class="menu__top">
           <div class="menu__icon">
-              <button class="hamburger" aria-label="Menu">
-                  <span class="hamburger__container" tabindex="-1">
-                    <span class="hamburger__bars"></span>
-                  </span>
-                </button>
+            <button class="hamburger" aria-label="Menu">
+              <span class="hamburger__container" tabindex="-1">
+                <span class="hamburger__bars"></span>
+              </span>
+            </button>
           </div>
         </div>
         <div class="menu__bottom">
           <div class="menu__list">
-              <li><a href="#hero">Home</a></li>
-              <li><a href="#omnie">O mnie</a></li>
-              <li><a href="#wydarzenia">Wydarzenia</a></li>
-              <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#omnie">O mnie</a></li>
+            <li><a href="#wydarzenia">Wydarzenia</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
           </div>
         </div>
       </div>
@@ -121,10 +121,10 @@
           preserveAspectRatio="none"
           style="height: 100%; width: 100%;"
         >
-        <path
-        d="M0.00,49.98 C283.52,252.13 350.85,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-        style="stroke: none; fill: rgb(255, 255, 255);"
-      ></path>
+          <path
+            d="M0.00,49.98 C283.52,252.13 350.85,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: rgb(255, 255, 255);"
+          ></path>
         </svg>
       </div>
       <div id="wydarzenia" class="events">
@@ -191,23 +191,23 @@
       let heroWaveContener = document.querySelector(".hero__wave");
       var heroWave = document.querySelector(".hero__wave svg");
       let content = document.querySelector(".content");
-      let menuIcon = document.querySelector('.menu__icon')
-      let menuList = document.querySelector('.menu__list')
-      let anchors = document.querySelectorAll('.menu__list a')
+      let menuIcon = document.querySelector(".menu__icon");
+      let menuList = document.querySelector(".menu__list");
+      let anchors = document.querySelectorAll(".menu__list a");
       let x = 0;
       let events = [];
-      let menu = document.querySelector('.hamburger');
+      let menu = document.querySelector(".hamburger");
 
-      anchors.forEach(function(el){
-        el.addEventListener('click', function(){
-          menuList.classList.toggle('show')
-      this.classList.toggle('hamburger--active');
-        })
-      })
-    menuIcon.addEventListener('click', function(){
-      menuList.classList.toggle('show')
-      this.classList.toggle('hamburger--active');
-    })
+      anchors.forEach(function(el) {
+        el.addEventListener("click", function() {
+          menuList.classList.toggle("show");
+          this.classList.toggle("hamburger--active");
+        });
+      });
+      menuIcon.addEventListener("click", function() {
+        menuList.classList.toggle("show");
+        this.classList.toggle("hamburger--active");
+      });
       dbRefEvents.on("child_added", function(snapshot) {
         var snap = snapshot.val();
         snap.id = snapshot.key;
