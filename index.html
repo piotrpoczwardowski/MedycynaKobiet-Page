@@ -129,7 +129,7 @@
       </div>
       <div id="wydarzenia" class="events">
         <h1 class="news__title">
-          Spotkajmy sie tutaj
+          Spotkajmy się tutaj...
         </h1>
         <div class="news"></div>
       </div>
@@ -193,9 +193,17 @@
       let content = document.querySelector(".content");
       let menuIcon = document.querySelector('.menu__icon')
       let menuList = document.querySelector('.menu__list')
+      let anchors = document.querySelectorAll('.menu__list a')
       let x = 0;
       let events = [];
       let menu = document.querySelector('.hamburger');
+
+      anchors.forEach(function(el){
+        el.addEventListener('click', function(){
+          menuList.classList.toggle('show')
+      this.classList.toggle('hamburger--active');
+        })
+      })
     menuIcon.addEventListener('click', function(){
       menuList.classList.toggle('show')
       this.classList.toggle('hamburger--active');
