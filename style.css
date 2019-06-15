@@ -506,8 +506,8 @@
 .wave {
   background: #ffffff;
   display: inline-block;
-  height: 60%;
-  width: 10px;
+  height: 10%;
+  width: 50%;
   position: absolute;
   -webkit-animation-name: dostuff;
   -webkit-animation-duration: 3s;
