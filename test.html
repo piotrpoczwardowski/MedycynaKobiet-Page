@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <style>
+      body {
+        height: auto;
+        margin: 0;
+      }
+
+      #ocean {
+        top: 0px;
+        position: absolute;
+        width: 100%;
+        min-height: 200px;
+        background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0, rgb(93, 137, 224)),
+          color-stop(0.5, rgb(162, 240, 236))
+        );
+      }
+
+      .wave {
+        background: #ee8e8e;
+        display: inline-block;
+        height: 60%;
+        width: 10px;
+        position: absolute;
+        -webkit-animation-name: dostuff;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-transition-timing-function: ease-in-out;
+        z-index: 10;
+      }
+
+      @-webkit-keyframes dostuff {
+        0% {
+          height: 60%;
+        }
+        50% {
+          height: 40%;
+        }
+        100% {
+          height: 60%;
+        }
+      }
+      .hero {
+        position: relative;
+        transform: rotate(180deg)
+      }
+      .hero__contener{
+          transform: rotate(180deg)
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero__contener">
+      <div id="ocean"></div>
+      <div id="hero" class="hero">
+        <img class="hero__logo" src="/logo2.png" alt="zdj" />
+
+        <h1 class="hero__title">Medycyna kobiet</h1>
+        <h2 class="hero__description">
+          Głównym celem grupy jest idea dzielenia się Medycyną Kobiet <br />
+          - w moim odczuciu jest nią głównie siostrzeństwo - <br />
+          uważna obecność dla drugiej Kobiety.
+        </h2>
+        <a
+          target="_blank"
+          href="https://www.facebook.com/groups/952385061559254/about/"
+          ><button class="hero__CTA">
+            Dowiedz się więcej
+          </button></a
+        >
+        <div class="icons hero__icons">
+          <a target="_blank" href="https://www.instagram.com/medycyna_kobiet/"
+            ><img src="./instagram.png" alt=""
+          /></a>
+          <a
+            target="_blank"
+            href="https://www.facebook.com/groups/952385061559254/"
+            ><img src="./facebook.png" alt=""
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // make some waves.
+      var ocean = document.getElementById("ocean"),
+        waveWidth = 10,
+        waveCount = Math.floor(window.innerWidth / waveWidth),
+        docFrag = document.createDocumentFragment();
+
+      for (var i = 0; i < waveCount; i++) {
+        var wave = document.createElement("div");
+        wave.className += " wave";
+        docFrag.appendChild(wave);
+        wave.style.left = i * waveWidth + "px";
+        wave.style.webkitAnimationDelay = i / 100 + "s";
+      }
+
+      ocean.appendChild(docFrag);
+    </script>
+  </body>
+</html>
