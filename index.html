@@ -34,55 +34,37 @@
           </div>
         </div>
       </div>
-      <div id="hero" class="hero">
-        <img class="hero__logo" src="/logo2.png" alt="zdj" />
-
-        <h1 class="hero__title">Medycyna kobiet</h1>
-        <h2 class="hero__description">
-          Głównym celem grupy jest idea dzielenia się Medycyną Kobiet <br />
-          - w moim odczuciu jest nią głównie siostrzeństwo - <br />
-          uważna obecność dla drugiej Kobiety.
-        </h2>
-        <a
-          target="_blank"
-          href="https://www.facebook.com/groups/952385061559254/about/"
-          ><button class="hero__CTA">
-            Dowiedz się więcej
-          </button></a
-        >
-        <div class="icons hero__icons">
-          <a target="_blank" href="https://www.instagram.com/medycyna_kobiet/"
-            ><img src="./instagram.png" alt=""
-          /></a>
-          <a
-            target="_blank"
-            href="https://www.facebook.com/groups/952385061559254/"
-            ><img src="./facebook.png" alt=""
-          /></a>
+      <div class="hero__contener">
+          <div id="ocean"></div>
+          <div id="hero" class="hero">
+            <img class="hero__logo" src="/logo2.png" alt="zdj" />
+    
+            <h1 class="hero__title">Medycyna kobiet</h1>
+            <h2 class="hero__description">
+              Głównym celem grupy jest idea dzielenia się Medycyną Kobiet <br />
+              - w moim odczuciu jest nią głównie siostrzeństwo - <br />
+              uważna obecność dla drugiej Kobiety.
+            </h2>
+            <a
+              target="_blank"
+              href="https://www.facebook.com/groups/952385061559254/about/"
+              ><button class="hero__CTA">
+                Dowiedz się więcej
+              </button></a
+            >
+            <div class="icons hero__icons">
+              <a target="_blank" href="https://www.instagram.com/medycyna_kobiet/"
+                ><img src="./instagram.png" alt=""
+              /></a>
+              <a
+                target="_blank"
+                href="https://www.facebook.com/groups/952385061559254/"
+                ><img src="./facebook.png" alt=""
+              /></a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="hero__wave" style="height: 150px;overflow: hidden">
-        <svg
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          style="height: 100%; width: 100%;"
-        >
-          <path
-            d="M0.00,49.98 C283.52,252.13 350.85,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-            style="stroke: none; fill: rgb(255, 255, 255);"
-          ></path>
-        </svg>
-        <!-- <svg
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          style="height: 100%; width: 100%;"
-        >
-          <path
-            d="M0.00,49.98 C283.52,252.13 350.85,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-            style="stroke: none; fill: rgb(117, 143, 165);"
-          ></path>
-        </svg> -->
-      </div>
+    
       <div id="omnie" class="about">
         <h1 class="about__title">
           O mnie
@@ -245,6 +227,22 @@
           .reverse()
           .join("");
       }
+
+       // make some waves.
+       var ocean = document.getElementById("ocean"),
+        waveWidth = 10,
+        waveCount = Math.floor(window.innerWidth / waveWidth),
+        docFrag = document.createDocumentFragment();
+
+      for (var i = 0; i < waveCount; i++) {
+        var wave = document.createElement("div");
+        wave.className += " wave";
+        docFrag.appendChild(wave);
+        wave.style.left = i * waveWidth + "px";
+        wave.style.webkitAnimationDelay = i / 100 + "s";
+      }
+
+      ocean.appendChild(docFrag);
     </script>
   </body>
 </html>
