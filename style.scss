@@ -8,9 +8,11 @@ $description: 25px;
   font-family: caviar;
   padding-bottom: 2px;
   background: linear-gradient(white, rgba(237, 30, 120, 0.377));
-
+  
   background-size: 100% 600%;
   transition: background-size 0.5s;
+  position: relative;
+  z-index: 50;
 
   &:hover {
     background-size: 100% 100%;
@@ -41,7 +43,6 @@ $description: 25px;
   max-width: 1600px;
   margin: 0 auto;
   position: relative;
-  
 }
 
 /* LOG */
@@ -148,13 +149,14 @@ $description: 25px;
   height: 2px;
   background-color: #000;
   transition: transform 220ms ease-in-out;
-  &:before, &:after {
+  &:before,
+  &:after {
     display: block;
     position: absolute;
     width: 35px;
     height: 2px;
     background-color: #000;
-    content: '';
+    content: "";
   }
   &:before {
     top: -12px;
@@ -172,23 +174,23 @@ $description: 25px;
     transition: transform 220ms 120ms ease-in-out;
     &:before {
       top: 0;
-      transition: top 100ms ease-out;   
+      transition: top 100ms ease-out;
     }
     &:after {
       bottom: 0;
       transform: rotate(-90deg);
-      transition: bottom 100ms ease-out, 
-        transform 220ms 120ms ease-in-out;
+      transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
     }
   }
 }
 
-.hamburger, .hamburger__container {
+.hamburger,
+.hamburger__container {
   &:focus {
     outline: none;
   }
 }
-.menu{
+.menu {
   width: 300px;
   position: fixed;
   overflow: hidden;
@@ -196,17 +198,18 @@ $description: 25px;
   z-index: 20;
   right: 0%;
 }
-.menu__top, .menu__bottom{
+.menu__top,
+.menu__bottom {
   display: flex;
   justify-content: flex-end;
 }
 
-.menu__icon{
+.menu__icon {
   position: relative;
-  z-index: 1;
-  background: red;
+  z-index: 180;
+
   width: 60px;
-  height:60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -215,7 +218,7 @@ $description: 25px;
   cursor: pointer;
   border: 1px solid black;
   top: 50px;
-  img{
+  img {
     height: 40px;
     width: auto;
   }
@@ -236,50 +239,50 @@ $description: 25px;
   }
 }
 
-.menu__list{
+.menu__list {
   position: relative;
-width: 100%;
+  width: 100%;
   list-style: none;
- background: rgba(255, 255, 255, 0.815);
+  background: rgba(255, 255, 255, 0.815);
   text-align: center;
   transition: margin-right 0.3s ease-in;
- padding-top: 80px;
+  padding-top: 80px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   margin-right: -300px;
   top: -20px;
+ 
+ 
 
-  ul{
-   
+  ul {
   }
-  li{
+  li {
     margin-bottom: 50px;
   }
-  a{
+  a {
     text-decoration: none;
     color: black;
     font-size: 30px;
     transition: color 0.3s;
     font-family: caviar;
-    &:hover{
+    &:hover {
       color: rgba(237, 30, 120, 0.377);
     }
-    
   }
 }
-.show{
+.show {
   margin-right: 0;
 }
-/* HERO */
-.hero__contener{
-  transform: rotate(180deg)
+.index{
+  z-index: 100;
 }
+/* HERO */
+
 .hero {
   text-align: center;
   background: url(./header.jpg);
   background-size: cover;
   position: relative;
-  transform: rotate(180deg);
 }
 
 .hero__logo {
@@ -291,7 +294,6 @@ width: 100%;
   font-weight: lighter;
   font-size: $title;
   font-family: flanella;
- 
 }
 .hero__description {
   font-weight: lighter;
@@ -315,15 +317,14 @@ width: 100%;
   margin: 0 auto;
   margin-top: $heroMargin;
   font-weight: lighter;
+  position: relative;
+  z-index: 50;
   img {
     height: 40px;
   }
 }
 .hero__icons {
   padding-bottom: 400px;
-}
-.hero__wave {
-  margin-top: -120px;
 }
 
 /* ABOUT */
@@ -337,7 +338,8 @@ width: 100%;
   height: 800px;
   background: url(./about.jpg);
   background-size: cover;
-  background-position-y: -100px;
+ 
+  position: relative;
 }
 .about__title {
   font-size: $title;
@@ -432,7 +434,6 @@ width: 100%;
   margin-right: auto;
   position: absolute;
   bottom: 5%;
- 
 }
 
 //FOOTER
@@ -480,51 +481,77 @@ width: 100%;
 }
 
 //WAVE
-
-#ocean {
-  top: 0px;
-  position: absolute;
-  width: 100%;
-  min-height: 200px;
-  background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0, rgb(93, 137, 224)),
-    color-stop(0.5, rgb(162, 240, 236))
-  );
-}
-
-.wave {
-  background: #ffffff;
-  display: inline-block;
-  height: 10%;
-  width: 50%;
-  position: absolute;
-  -webkit-animation-name: dostuff;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-transition-timing-function: ease-in-out;
-  z-index: 10;
-}
-
-@-webkit-keyframes dostuff {
+@keyframes move_wave {
   0% {
-    height: 60%;
+    transform: translateX(0) translateZ(0) scaleY(1);
   }
   50% {
-    height: 40%;
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
   }
   100% {
-    height: 60%;
+    transform: translateX(-50%) translateZ(0) scaleY(1);
   }
 }
-@media (max-width: 1148px) {
-  .hero {
-    background-position-y: 150px;
-    background-repeat: no-repeat;
-  }
+.waveWrapper {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+ 
 }
+.waveWrapperInner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100px;
+  bottom: -1px;
+ 
+}
+.bgTop {
+  z-index: 15;
+  opacity: 0.5;
+}
+.bgMiddle {
+  z-index: 10;
+  opacity: 0.75;
+}
+.bgBottom {
+  z-index: 5;
+}
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+.waveTop {
+  background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+  animation: move-wave 3s;
+  -webkit-animation: move-wave 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.waveMiddle {
+  background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+  animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+  background-size: 50% 100px;
+}
+.waveAnimation .waveBottom {
+  animation: move_wave 15s linear infinite;
+}
+
 @media (max-width: 1048px) {
   .news__block {
     display: block;
@@ -592,16 +619,11 @@ width: 100%;
     bottom: 0;
     margin-top: 40px;
   }
-  .menu__list{
- 
-  
-   
-    a{
-     
-      &:hover{
+  .menu__list {
+    a {
+      &:hover {
         color: rgb(0, 0, 0);
       }
-      
     }
   }
 }
@@ -621,7 +643,10 @@ width: 100%;
   .about__description {
     padding: 0 10px;
   }
-  .hero__title, .about__title, .news__title, .footer__title{
+  .hero__title,
+  .about__title,
+  .news__title,
+  .footer__title {
     font-size: 60px;
   }
 }
@@ -641,7 +666,10 @@ width: 100%;
   .block__img {
     height: 200px;
   }
-  .hero__title, .about__title, .news__title, .footer__title{
+  .hero__title,
+  .about__title,
+  .news__title,
+  .footer__title {
     font-size: 40px;
   }
 }

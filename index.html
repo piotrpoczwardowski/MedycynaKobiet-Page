@@ -34,8 +34,8 @@
           </div>
         </div>
       </div>
-      <div class="hero__contener">
-          <div id="ocean"></div>
+     
+       
           <div id="hero" class="hero">
             <img class="hero__logo" src="/logo2.png" alt="zdj" />
     
@@ -62,8 +62,19 @@
                 ><img src="./facebook.png" alt=""
               /></a>
             </div>
+            <div class="waveWrapper waveAnimation">
+                <div class="waveWrapperInner bgTop">
+                  <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+                </div>
+                <div class="waveWrapperInner bgMiddle">
+                  <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+                </div>
+                <div class="waveWrapperInner bgBottom">
+                  <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+                </div>
+              </div>
           </div>
-        </div>
+        
     
       <div id="omnie" class="about">
         <h1 class="about__title">
@@ -96,8 +107,20 @@
           roslinami.
         </p>
       </div>
-      <div class="about__image"></div>
-      <div class="about__wave" style="height: 150px; overflow: hidden;">
+      <div  class="about__image">
+          <div class="waveWrapper waveAnimation">
+              <div class="waveWrapperInner bgTop">
+                <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+              </div>
+              <div class="waveWrapperInner bgMiddle">
+                <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+              </div>
+              <div class="waveWrapperInner bgBottom">
+                <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+              </div>
+            </div>
+      </div>
+      <!-- <div class="about__wave" style="height: 150px; overflow: hidden;">
         <svg
           viewBox="0 0 500 150"
           preserveAspectRatio="none"
@@ -108,7 +131,7 @@
             style="stroke: none; fill: rgb(255, 255, 255);"
           ></path>
         </svg>
-      </div>
+      </div> -->
       <div id="wydarzenia" class="events">
         <h1 class="news__title">
           Spotkajmy się tutaj...
@@ -172,6 +195,7 @@
       let news = document.querySelector(".news");
     
       let content = document.querySelector(".content");
+      let menuIndex = document.querySelector(".menu");
       let menuIcon = document.querySelector(".menu__icon");
       let menuList = document.querySelector(".menu__list");
       let anchors = document.querySelectorAll(".menu__list a");
@@ -182,12 +206,14 @@
       anchors.forEach(function(el) {
         el.addEventListener("click", function() {
           menuList.classList.toggle("show");
-          this.classList.toggle("hamburger--active");
+          menuIcon.classList.toggle("hamburger--active");
+          menuIndex.classList.toggle("index");
         });
       });
       menuIcon.addEventListener("click", function() {
         menuList.classList.toggle("show");
         this.classList.toggle("hamburger--active");
+        menuIndex.classList.toggle("index");
       });
       dbRefEvents.on("child_added", function(snapshot) {
         var snap = snapshot.val();
@@ -227,21 +253,7 @@
           .join("");
       }
 
-       // make some waves.
-       var ocean = document.getElementById("ocean"),
-        waveWidth = 10,
-        waveCount = Math.floor(window.innerWidth / waveWidth),
-        docFrag = document.createDocumentFragment();
-
-      for (var i = 0; i < waveCount; i++) {
-        var wave = document.createElement("div");
-        wave.className += " wave";
-        docFrag.appendChild(wave);
-        wave.style.left = i * waveWidth + "px";
-        wave.style.webkitAnimationDelay = i / 100 + "s";
-      }
-
-      ocean.appendChild(docFrag);
+   
     </script>
   </body>
 </html>
