@@ -1,154 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-    <style>
-      body {
-        height: auto;
-        margin: 0;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+   @keyframes move_wave {
+    0% {
+        transform: translateX(0) 
+    }
+    50% {
+        transform: translateX(-25%) 
+    }
+    100% {
+        transform: translateX(-50%) 
+    }
+}
+.waveWrapper {
+   
+    position: absolute;
+   width: 100%;
+   height: 200px;
+    margin: auto;
+    background: red;
+}
+.waveWrapperInner {
+    position: absolute;
+    width: 50%;
+    overflow: hidden;
+    height: 50%;
+    bottom: -1px;
+    background-image: linear-gradient(to top, #0d7a2800 20%, #27273c00 80%);
+}
 
-      .ocean {
-     
-        position: absolute;
-        width: 100%;
-        min-height: 200px;
-        background-image: -webkit-gradient(
-          linear,
-          left bottom,
-          left top,
-          color-stop(0, rgb(93, 137, 224)),
-          color-stop(0.5, rgb(162, 240, 236))
-        );
-      }
+.bgBottom {
+    z-index: 5;
+}
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+   
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+}
 
-      .wave {
-        background: #ee8e8e;
-        display: inline-block;
-        height: 60%;
-        width: 10px;
-        position: absolute;
-        -webkit-animation-name: dostuff;
-        -webkit-animation-duration: 3s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-transition-timing-function: ease-in-out;
-     
-      }
 
-      @-webkit-keyframes dostuff {
-        0% {
-          height: 60%;
-        }
-        50% {
-          height: 40%;
-        }
-        100% {
-          height: 60%;
-        }
-      }
-      .hero {
-        position: relative;
-        transform: rotate(180deg)
-      }
-      .hero__contener{
-          transform: rotate(180deg)
-      }
-      .about__contener{
-       transform: rotate(180deg)
-      }
-      .about__image{
-        position: relative;
-        transform: rotate(180deg)
-     
-      }
 
-       .wave2 {
-           z-index: 5;
-        background: #530606;
-        display: inline-block;
-        height: 60%;
-        width: 10px;
-        position: absolute;
-        -webkit-animation-name: dostuff;
-        -webkit-animation-duration: 3s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-transition-timing-function: ease-in-out;
-     
-      }
-    </style>
-  </head>
-  <body>
-    <div class="hero__contener">
-      <div class="ocean"></div>
-      <div id="hero" class="hero">
-        <img class="hero__logo" src="/logo2.png" alt="zdj" />
 
-        <h1 class="hero__title">Medycyna kobiet</h1>
-        <h2 class="hero__description">
-          Głównym celem grupy jest idea dzielenia się Medycyną Kobiet <br />
-          - w moim odczuciu jest nią głównie siostrzeństwo - <br />
-          uważna obecność dla drugiej Kobiety.
-        </h2>
-        <a
-          target="_blank"
-          href="https://www.facebook.com/groups/952385061559254/about/"
-          ><button class="hero__CTA">
-            Dowiedz się więcej
-          </button></a
-        >
-        <div class="icons hero__icons">
-          <a target="_blank" href="https://www.instagram.com/medycyna_kobiet/"
-            ><img src="./instagram.png" alt=""
-          /></a>
-          <a
-            target="_blank"
-            href="https://www.facebook.com/groups/952385061559254/"
-            ><img src="./facebook.png" alt=""
-          /></a>
-        </div>
-      </div>
+.waveBottom {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveBottom {
+    animation: move_wave 10s linear infinite;
+}
+  </style>
+</head>
+<body>
+  <div class="waveWrapper waveAnimation">
+   
+    <div class="waveWrapperInner bgBottom">
+      <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
     </div>
-    <div class="about__contener">
-        <div  class="ocean ocean2"></div>
-            <div class="about__image"></div>
-
-    </div>
-  
-    <script>
-      // make some waves.
-      var ocean = document.querySelector(".ocean"),
-        waveWidth = 10,
-        waveCount = Math.floor(window.innerWidth / waveWidth),
-        docFrag = document.createDocumentFragment();
-
-      for (var i = 0; i < waveCount; i++) {
-        var wave = document.createElement("div");
-        wave.className += " wave";
-        docFrag.appendChild(wave);
-        wave.style.left = i * waveWidth + "px";
-        wave.style.webkitAnimationDelay = i / 100 + "s";
-      }
-
-      ocean.appendChild(docFrag);
-
-      var ocean2 = document.querySelector(".ocean2"),
-        waveWidth2 = 10,
-        waveCount2 = Math.floor(window.innerWidth / waveWidth),
-        docFrag2 = document.createDocumentFragment();
-
-      for (var i = 0; i < waveCount2; i++) {
-        var wave2 = document.createElement("div");
-        wave2.className += " wave2";
-        docFrag2.appendChild(wave2);
-        wave2.style.left = i * waveWidth2 + "px";
-        wave2.style.webkitAnimationDelay = i / 100 + "s";
-      }
-
-      ocean2.appendChild(docFrag2);
-    </script>
-  </body>
+  </div>
+</body>
 </html>
