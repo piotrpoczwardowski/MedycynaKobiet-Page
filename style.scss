@@ -9,7 +9,7 @@ $description: 25px;
   padding-bottom: 2px;
   background: linear-gradient(white, rgba(237, 30, 120, 0.377));
   
-  background-size: 100% 600%;
+  background-size: 100% 800%;
   transition: background-size 0.5s;
   position: relative;
   z-index: 50;
@@ -20,7 +20,7 @@ $description: 25px;
 
   @media (max-width: 1148px) {
     &:hover {
-      background-size: 100% 400%;
+      background-size: 100% 800%;
     }
   }
 }
@@ -203,8 +203,7 @@ $description: 25px;
   display: flex;
   justify-content: flex-end;
 }
-
-.menu__icon {
+.menu__icon{
   position: relative;
   z-index: 180;
 
@@ -214,19 +213,17 @@ $description: 25px;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin-right: 20px;
   cursor: pointer;
   border: 1px solid black;
-  top: 50px;
+  background: linear-gradient(white, rgba(237, 30, 120, 0.377));
+
+  background-size: 100% 800%;
+  transition: background-size 0.5s;
+  top: 40px;
   img {
     height: 40px;
     width: auto;
   }
-
-  background: linear-gradient(white, rgba(237, 30, 120, 0.377));
-
-  background-size: 100% 600%;
-  transition: background-size 0.5s;
 
   &:hover {
     background-size: 100% 100%;
@@ -234,9 +231,21 @@ $description: 25px;
 
   @media (max-width: 1148px) {
     &:hover {
-      background-size: 100% 400%;
+      background-size: 100% 800%;
     }
   }
+}
+.menu__sound{
+  margin-right: 50px;
+}
+.menu__hamburger {
+  
+  margin-right: 60px;
+ 
+
+ 
+
+ 
 }
 
 .menu__list {
