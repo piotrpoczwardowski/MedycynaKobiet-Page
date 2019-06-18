@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="content">
-        <div class="menu__sound menu__icon play"><img src="./on.png" alt=""></div>
+        <div class="menu__sound menu__icon play"><img src="./off.png" alt=""></div>
       <div class="menu">
         
         <div class="menu__top">
@@ -176,7 +176,8 @@
         </div>
       </footer>
     </div>
-    <audio controls autoplay>
+    <iframe src="silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+    <audio style="display:none" autoplay loop controls>
         <source src="./oryom.mp3" type="audio/ogg">
         <source src="./oryom.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -224,15 +225,16 @@
   //      }
   //     })
   //  })
+
     menuSound.addEventListener('click', function(){
       this.classList.toggle('play')
 
       if(this.classList.contains('play')){
         music.play()
-        soundImg.src = './on.png'
+        soundImg.src = './off.png'
       } else{
         music.pause()
-        soundImg.src = './off.png'
+        soundImg.src = './on.png'
       }
     })
      
