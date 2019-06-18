@@ -8,7 +8,7 @@ $description: 25px;
   font-family: caviar;
   padding-bottom: 2px;
   background: linear-gradient(white, rgba(237, 30, 120, 0.377));
-  
+
   background-size: 100% 800%;
   transition: background-size 0.5s;
   position: relative;
@@ -44,6 +44,25 @@ $description: 25px;
   margin: 0 auto;
   position: relative;
 }
+
+// .about__title,
+// .about__description,
+// .news__title,
+// .block__img,
+// .block__title,
+// .block__subtitle,
+// .block__description,
+// .block__button,
+// .footer__title,
+// .footer__button,
+// .footer__text,
+// .footer__email,
+// .footer__icons {
+//   transition-property: opacity;
+//   transition-duration: 1s;
+//   opacity: 0.3;
+//   transform: translateY(-100px)
+// }
 
 /* LOG */
 .log {
@@ -203,7 +222,7 @@ $description: 25px;
   display: flex;
   justify-content: flex-end;
 }
-.menu__icon{
+.menu__icon {
   position: relative;
   z-index: 180;
 
@@ -235,17 +254,22 @@ $description: 25px;
     }
   }
 }
-.menu__sound{
-  margin-right: 50px;
+.menu__sound {
+ position: fixed;
+ left: 60px;
+ img{
+   width: 40px;
+   height: auto;
+ }
 }
+.play{
+  img{
+    transform: translateY(2px)
+  }
+}
+
 .menu__hamburger {
-  
   margin-right: 60px;
- 
-
- 
-
- 
 }
 
 .menu__list {
@@ -260,8 +284,6 @@ $description: 25px;
   border-bottom-left-radius: 20px;
   margin-right: -300px;
   top: -20px;
- 
- 
 
   ul {
   }
@@ -282,7 +304,7 @@ $description: 25px;
 .show {
   margin-right: 0;
 }
-.index{
+.index {
   z-index: 100;
 }
 /* HERO */
@@ -296,13 +318,14 @@ $description: 25px;
 
 .hero__logo {
   width: 200px;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 .hero__title {
   font-weight: lighter;
   font-size: $title;
   font-family: flanella;
+  margin-top: 40px;
 }
 .hero__description {
   font-weight: lighter;
@@ -347,7 +370,7 @@ $description: 25px;
   height: 800px;
   background: url(./about.jpg);
   background-size: cover;
- 
+
   position: relative;
 }
 .about__title {
@@ -509,7 +532,6 @@ $description: 25px;
   bottom: 0;
   top: 0;
   margin: auto;
- 
 }
 .waveWrapperInner {
   position: absolute;
@@ -517,7 +539,6 @@ $description: 25px;
   overflow: hidden;
   height: 100px;
   bottom: -1px;
- 
 }
 .bgTop {
   z-index: 15;

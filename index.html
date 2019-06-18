@@ -15,9 +15,11 @@
   </head>
   <body>
     <div class="content">
+        <div class="menu__sound menu__icon play"><img src="./on.png" alt=""></div>
       <div class="menu">
+        
         <div class="menu__top">
-          <div class="menu__sound menu__icon play">O</div>
+         
           <div class="menu__hamburger menu__icon">
             <button class="hamburger" aria-label="Menu">
               <span class="hamburger__container" tabindex="-1">
@@ -157,7 +159,7 @@
         <p class="footer__email">
           medycynakobiet@protonmail.com
         </p>
-        <div class="icons">
+        <div class="icons footer__icons">
           <a target="_blank" href="https://www.instagram.com/medycyna_kobiet/"
             ><img src="./instagram.png" alt=""
           /></a>
@@ -174,11 +176,11 @@
         </div>
       </footer>
     </div>
-    <audio controls>
-      <source src="./oryom.mp3" type="audio/ogg">
-      <source src="./oryom.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-    </audio>
+    <audio controls autoplay>
+        <source src="./oryom.mp3" type="audio/ogg">
+        <source src="./oryom.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <script>
       const usersApiUrl = "https://medycynakobiet-3713e.firebaseio.com/";
@@ -204,24 +206,36 @@
       let menuIndex = document.querySelector(".menu");
       let menuIcon = document.querySelector(".menu__hamburger");
       let menuSound = document.querySelector(".menu__sound");
+      let soundImg = document.querySelector('.menu__sound img')
       let menuList = document.querySelector(".menu__list");
       let anchors = document.querySelectorAll(".menu__list a");
       let x = 0;
       let events = [];
       let menu = document.querySelector(".hamburger");
       let music = document.querySelector('audio')
-      
-      music.play()
-      menuSound.addEventListener('click', function(){
-        
-        this.classList.toggle('play')
-        if(this.classList.contains('play')){
-          music.play()
-        } else{
-          music.pause()
-        }
+  //     let appearItems = document.querySelectorAll('.about__title,.about__description,.news__title,.block__img,.block__title,.block__subtitle,.block__description,.block__button,.footer__title,.footer__button,.footer__text,.footer__email,.footer__icons ')
+   
+  //  window.addEventListener('scroll',function(e){
+     
+  //    appearItems.forEach(function(el){
+  //      if(el.offsetHeight < window.scrollY){
+  //        el.style.opacity = 1
+         
+  //      }
+  //     })
+  //  })
+    menuSound.addEventListener('click', function(){
+      this.classList.toggle('play')
 
-      })
+      if(this.classList.contains('play')){
+        music.play()
+        soundImg.src = './on.png'
+      } else{
+        music.pause()
+        soundImg.src = './off.png'
+      }
+    })
+     
     
       anchors.forEach(function(el) {
         el.addEventListener("click", function() {

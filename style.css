@@ -243,7 +243,17 @@
 }
 
 .menu__sound {
-  margin-right: 50px;
+  position: fixed;
+  left: 60px;
+}
+
+.menu__sound img {
+  width: 40px;
+  height: auto;
+}
+
+.play img {
+  transform: translateY(2px);
 }
 
 .menu__hamburger {
@@ -298,13 +308,14 @@
 
 .hero__logo {
   width: 200px;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 .hero__title {
   font-weight: lighter;
   font-size: 90px;
   font-family: flanella;
+  margin-top: 40px;
 }
 
 .hero__description {
