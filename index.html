@@ -288,7 +288,37 @@
           .reverse()
           .join("");
       }
+  // loaded images
 
+  var allLoaded = false;
+var imgCount = 0;  // this counts the loaded images
+// list of images to load
+const imageURLS =["a.jpg","b.jpg","c.jpg","d.jpg","e.jpg"];
+// array of images
+var images = [];
+
+const onImageLoad = function(){ imgCount += 1; } // onload event
+// loads an image an puts it on the image array
+const loadImage = function(url){
+    images.push(new Image());
+    images[images.length-1].src = url
+    images[images.length-1].onload = onImageLoad;
+}
+const waitForLoaded = function(){
+    if(imgCount === images.length){
+        allLoaded = true;   // flag that the image have loaded
+    }else{
+        // display  the progress here
+        
+
+        setTimeout(waitForLoaded,100); // try again in 100ms
+    }
+}
+
+// create the images and set the URLS
+imageURLS.forEach(loadImage);
+
+setTimeout(waitForLoaded,100);  // monitor the image loading
    
     </script>
   </body>
