@@ -30,7 +30,7 @@
         </div>
         <div class="menu__bottom">
           <div class="menu__list">
-            <li><a href="#hero">Home</a></li>
+            <li><a href="#hero">Homee</a></li>
             <li><a href="#omnie">O mnie</a></li>
             <li><a href="#wydarzenia">Wydarzenia</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
@@ -214,18 +214,8 @@
       let events = [];
       let menu = document.querySelector(".hamburger");
       let music = document.querySelector('audio')
-  //     let appearItems = document.querySelectorAll('.about__title,.about__description,.news__title,.block__img,.block__title,.block__subtitle,.block__description,.block__button,.footer__title,.footer__button,.footer__text,.footer__email,.footer__icons ')
-   
-  //  window.addEventListener('scroll',function(e){
-     
-  //    appearItems.forEach(function(el){
-  //      if(el.offsetHeight < window.scrollY){
-  //        el.style.opacity = 1
-         
-  //      }
-  //     })
-  //  })
-
+ 
+content.style.display = 'none'
     menuSound.addEventListener('click', function(){
       this.classList.toggle('play')
 
@@ -257,6 +247,7 @@
         events.push(snap);
 
         uptadeEvents();
+        content.style.display = 'block'
       });
       function uptadeEvents() {
         events.sort((a, b) => (a.order > b.order ? 1 : -1));
@@ -288,37 +279,7 @@
           .reverse()
           .join("");
       }
-  // loaded images
 
-  var allLoaded = false;
-var imgCount = 0;  // this counts the loaded images
-// list of images to load
-const imageURLS =["a.jpg","b.jpg","c.jpg","d.jpg","e.jpg"];
-// array of images
-var images = [];
-
-const onImageLoad = function(){ imgCount += 1; } // onload event
-// loads an image an puts it on the image array
-const loadImage = function(url){
-    images.push(new Image());
-    images[images.length-1].src = url
-    images[images.length-1].onload = onImageLoad;
-}
-const waitForLoaded = function(){
-    if(imgCount === images.length){
-        allLoaded = true;   // flag that the image have loaded
-    }else{
-        // display  the progress here
-        
-
-        setTimeout(waitForLoaded,100); // try again in 100ms
-    }
-}
-
-// create the images and set the URLS
-imageURLS.forEach(loadImage);
-
-setTimeout(waitForLoaded,100);  // monitor the image loading
    
     </script>
   </body>
